@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: space-app-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: space-app
+  template:
+    metadata:
+      labels:
+        app: space-app
+    spec:
+      containers:
+      - name: space-app-container
+        image: azzazhakim/space-app:v1
+        ports:
+        - containerPort: 3000
