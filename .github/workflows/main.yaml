@@ -35,8 +35,8 @@ jobs:
         docker push ${{ secrets.DOCKER_USERNAME }}/space-app:latest
 
     - name: Deploy to GKE
-        run: |
-          echo ${{ secrets.GCP_SA_KEY }} > gcp-sa-key.json
-          gcloud auth activate-service-account --key-file=gcp-sa-key.json
-          gcloud container clusters get-credentials space-app-cluster --zone europe-west4-a
-          kubectl apply -f k8s/
+      run: |
+        echo ${{ secrets.GCP_SA_KEY }} > gcp-sa-key.json
+        gcloud auth activate-service-account --key-file=gcp-sa-key.json
+        gcloud container clusters get-credentials space-app-cluster --zone europe-west4-a
+        kubectl apply -f k8s/
